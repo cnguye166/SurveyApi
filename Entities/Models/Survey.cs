@@ -9,11 +9,12 @@ namespace Entities.Models
         [Column("SurveyId")]
         public Guid Id { get; set; }
 
-
-        [Required(ErrorMessage = "Survey name is a required field.")]
+        [Required(ErrorMessage = "Survey Title is a required field.")]
         [MaxLength(60, ErrorMessage = "Maximum length for the Title is 60 characters.")]
         public string? Title { get; set; }
+
         public string? Topic { get; set; }
+
         public ICollection<Question>? Questions { get; set; }
     }
 }
