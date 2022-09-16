@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entities.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,10 @@ namespace Contracts
 {
     public interface IQuestionRepository
     {
+        Task<IEnumerable<Question>> GetQuestionsAsync(Guid surveyId, bool trackChanges);
+        Task<Question> GetQuestionAsync(Guid surveyId, Guid id, bool trackChanges);
+        void CreateQuestionForSurvey(Guid surveyId, Question question);
+        void DeleteQuestion(Question question);
+
     }
 }

@@ -1,8 +1,23 @@
 {
   "version": 2,
-  "dgSpecHash": "V8PQT7geHu8/kEHVB4Z14WUWYM0lniQWjBcGJKu/lX8C91pYYQyLs0uNDYefrC7sHZ9CfZDUHDXificC7QXKUA==",
+  "dgSpecHash": "Kw5NjiUEmH9HlRyM+i+ww+aVUnuti2Fwgg7Mvwy/rIHNCK24sL6cPTAG2Xdw+ZZgnnP3OcS4R2T553Zc7YbzGg==",
   "success": true,
-  "projectFilePath": "D:\\Personal Project\\Survey\\Contracts\\Contracts.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\wwwCh\\source\\repos\\SurveyApi\\Contracts\\Contracts.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\wwwCh\\.nuget\\packages\\microsoft.aspnetcore.http\\2.2.2\\microsoft.aspnetcore.http.2.2.2.nupkg.sha512",
+    "C:\\Users\\wwwCh\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\wwwCh\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
+    "C:\\Users\\wwwCh\\.nuget\\packages\\microsoft.aspnetcore.webutilities\\2.2.0\\microsoft.aspnetcore.webutilities.2.2.0.nupkg.sha512",
+    "C:\\Users\\wwwCh\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\2.2.0\\microsoft.extensions.dependencyinjection.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\wwwCh\\.nuget\\packages\\microsoft.extensions.objectpool\\2.2.0\\microsoft.extensions.objectpool.2.2.0.nupkg.sha512",
+    "C:\\Users\\wwwCh\\.nuget\\packages\\microsoft.extensions.options\\2.2.0\\microsoft.extensions.options.2.2.0.nupkg.sha512",
+    "C:\\Users\\wwwCh\\.nuget\\packages\\microsoft.extensions.primitives\\2.2.0\\microsoft.extensions.primitives.2.2.0.nupkg.sha512",
+    "C:\\Users\\wwwCh\\.nuget\\packages\\microsoft.net.http.headers\\2.2.0\\microsoft.net.http.headers.2.2.0.nupkg.sha512",
+    "C:\\Users\\wwwCh\\.nuget\\packages\\system.buffers\\4.5.0\\system.buffers.4.5.0.nupkg.sha512",
+    "C:\\Users\\wwwCh\\.nuget\\packages\\system.componentmodel.annotations\\4.5.0\\system.componentmodel.annotations.4.5.0.nupkg.sha512",
+    "C:\\Users\\wwwCh\\.nuget\\packages\\system.memory\\4.5.1\\system.memory.4.5.1.nupkg.sha512",
+    "C:\\Users\\wwwCh\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.1\\system.runtime.compilerservices.unsafe.4.5.1.nupkg.sha512",
+    "C:\\Users\\wwwCh\\.nuget\\packages\\system.text.encodings.web\\4.5.0\\system.text.encodings.web.4.5.0.nupkg.sha512"
+  ],
   "logs": []
 }

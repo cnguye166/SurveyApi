@@ -20,7 +20,7 @@ namespace Entities.Models
 
         [ForeignKey(nameof(Survey))]
         public Guid SurveyId {get; set; }
-        public Survey? Survey { get; set; }
+        public SurveyModel? Survey { get; set; }
     }
 
 }

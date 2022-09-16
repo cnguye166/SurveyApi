@@ -24,7 +24,7 @@ namespace Repository
 
         }
         public DbSet<Question>? Questions { get; set; }
-        public DbSet<Survey>? Surveys { get; set; }
+        public DbSet<SurveyModel>? Surveys { get; set; }
         public DbSet<Choice>? Choices { get; set; }
 
     }

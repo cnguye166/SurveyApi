@@ -1,4 +1,5 @@
-﻿using Contracts;
+﻿using AutoMapper;
+using Contracts;
 using Service.Contracts;
 using System;
 using System.Collections.Generic;
@@ -15,11 +16,11 @@ namespace Service
         private readonly Lazy<IQuestionService> _questionService;
         private readonly Lazy<IChoiceService> _choiceService;
 
-        public ServiceManager(IRepositoryManager repositoryManager, ILoggerManager logger)
+        public ServiceManager(IRepositoryManager repositoryManager, ILoggerManager logger, IMapper mapper)
         {
-            _surveyService = new Lazy<ISurveyService>(() => new SurveyService(repositoryManager, logger));
-            _questionService = new Lazy<IQuestionService>(() => new QuestionService(repositoryManager, logger));
-            _choiceService = new Lazy<IChoiceService>(() => new ChoiceService(repositoryManager, logger));
+            _surveyService = new Lazy<ISurveyService>(() => new SurveyService(repositoryManager, logger, mapper));
+            _questionService = new Lazy<IQuestionService>(() => new QuestionService(repositoryManager, logger, mapper));
+            _choiceService = new Lazy<IChoiceService>(() => new ChoiceService(repositoryManager, logger, mapper));
 
         }
 

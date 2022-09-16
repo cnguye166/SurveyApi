@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Repository
 {
-    public class ChoiceRepository : RepositoryBase<Choice>, IChoiceRepository
+    internal sealed class ChoiceRepository : RepositoryBase<Choice>, IChoiceRepository
     {
         public ChoiceRepository(RepositoryContext repositoryContext) : base(repositoryContext)
         {

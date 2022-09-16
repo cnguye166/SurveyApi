@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "WV3wt/NqlzEkN2/ifVC7+g9zU7RPoZfQB+NwtwlPLrRCEfIL+Kvw0Eft8nORBmnNUkrOKAStJFvhNMUHBUjV0g==",
+  "dgSpecHash": "q0vqB/Z34LEcKXE9QdVQHadIZ56Mz3cIXeXfAcg7O9yXvcVIoImNZT+kD0xcb54bGfbjosNm18IcLX9FaqqWkw==",
   "success": true,
-  "projectFilePath": "D:\\Personal Project\\Survey\\Service.Contracts\\Service.Contracts.csproj",
+  "projectFilePath": "C:\\Users\\wwwCh\\source\\repos\\SurveyApi\\Service.Contracts\\Service.Contracts.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

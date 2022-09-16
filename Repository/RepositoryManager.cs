@@ -29,9 +29,9 @@ namespace Repository
 
         public IChoiceRepository Choice => _choiceRepository.Value;
 
-        public void Save()
+        public async Task SaveAsync()
         {
-            _repositoryContext.SaveChanges();
+            await _repositoryContext.SaveChangesAsync();
         }
     }
 }

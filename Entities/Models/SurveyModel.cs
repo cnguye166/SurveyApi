@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Entities.Models
 {
-    public class Survey
+    public class SurveyModel
     {
         [Column("SurveyId")]
         public Guid Id { get; set; }
