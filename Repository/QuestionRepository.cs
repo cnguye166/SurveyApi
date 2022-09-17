@@ -31,6 +31,13 @@ namespace Repository
             return await FindByCondition(e => e.SurveyId.Equals(surveyId) && e.Id.Equals(id), trackChanges).SingleOrDefaultAsync();
         }
 
+        public async Task<Question> GetQuestionChoicesAsync(Guid surveyId, Guid id, bool trackChanges)
+        {
+            return await FindByCondition(q => q.SurveyId.Equals(surveyId) && q.Id.Equals(id), trackChanges)
+                .Include(q => q.Choices)
+                .SingleOrDefaultAsync();
+        }
+
         public async Task<IEnumerable<Question>> GetQuestionsAsync(Guid surveyId, bool trackChanges)
         {
             return await FindByCondition(e => e.SurveyId.Equals(surveyId), trackChanges).ToListAsync();

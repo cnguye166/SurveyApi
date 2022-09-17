@@ -13,6 +13,7 @@ namespace Entities.Models
         [MaxLength(60, ErrorMessage = "Maximum length for the Title is 60 characters.")]
         public string? Title { get; set; }
 
+        [MaxLength(30, ErrorMessage = "Maximum length for the Topic is 30 characters.")]
         public string? Topic { get; set; }
 
         public ICollection<Question>? Questions { get; set; }

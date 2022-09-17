@@ -218,6 +218,9 @@
       "System.Runtime.CompilerServices.Unsafe/6.0.0": {},
       "System.Text.Encodings.Web/4.5.0": {},
       "Contracts/1.0.0": {
+        "dependencies": {
+          "Entities": "1.0.0"
+        },
         "runtime": {
           "Contracts.dll": {}
         }

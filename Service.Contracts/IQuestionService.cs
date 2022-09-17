@@ -11,6 +11,7 @@ namespace Service.Contracts
     {
         Task<IEnumerable<QuestionDto>> GetQuestionsAsync(Guid surveyId, bool trackChanges);
         Task<QuestionDto> GetQuestionAsync(Guid surveyId, Guid id, bool trackChanges);
+        Task<QuestionChoiceDto> GetQuestionChoicesAsync(Guid surveyId, Guid id, bool trackChanges);
         Task<QuestionDto> CreateQuestionForSurveyAsync(Guid surveyId, QuestionForCreationDto questionForCreation, bool trackChanges);
         Task DeleteQuestionForSurveyAsync(Guid surveyId, Guid id, bool trackChanges);
 

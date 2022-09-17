@@ -11,10 +11,12 @@ namespace Service.Contracts
     {
 
         Task<IEnumerable<SurveyDto>> GetAllSurveysAsync(bool trackChanges);
-        Task<SurveyDto> GetSurveyAsync(Guid surveyId, bool trackChanges);
+        Task<SurveyQuestionDto> GetSurveyQuestionsChoicesAsync(Guid surveyId, bool trackChanges);
 
+        Task<SurveyDto> GetSurveyAsync(Guid surveyId, bool trackChanges);
         Task<SurveyDto> CreateSurveyAsync(SurveyForCreationDto survey);
         Task DeleteSurveyAsync(Guid surveyId, bool trackChanges);
         Task UpdateSurveyAsync(Guid surveyId, SurveyForUpdateDto surveyForUpdate, bool trackChanges);
+
     }
 }

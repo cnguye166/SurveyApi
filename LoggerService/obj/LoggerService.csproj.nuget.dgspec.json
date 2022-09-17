@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\wwwCh\\source\\repos\\SurveyApi\\LoggerService\\LoggerService.csproj": {}
+    "D:\\Personal Project\\Survey2\\LoggerService\\LoggerService.csproj": {}
   },
   "projects": {
-    "C:\\Users\\wwwCh\\source\\repos\\SurveyApi\\Contracts\\Contracts.csproj": {
+    "D:\\Personal Project\\Survey2\\Contracts\\Contracts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\wwwCh\\source\\repos\\SurveyApi\\Contracts\\Contracts.csproj",
+        "projectUniqueName": "D:\\Personal Project\\Survey2\\Contracts\\Contracts.csproj",
         "projectName": "Contracts",
-        "projectPath": "C:\\Users\\wwwCh\\source\\repos\\SurveyApi\\Contracts\\Contracts.csproj",
-        "packagesPath": "C:\\Users\\wwwCh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\wwwCh\\source\\repos\\SurveyApi\\Contracts\\obj\\",
+        "projectPath": "D:\\Personal Project\\Survey2\\Contracts\\Contracts.csproj",
+        "packagesPath": "C:\\Users\\Charles\\.nuget\\packages\\",
+        "outputPath": "D:\\Personal Project\\Survey2\\Contracts\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\wwwCh\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Charles\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -32,8 +28,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\wwwCh\\source\\repos\\SurveyApi\\Entities\\Entities.csproj": {
-                "projectPath": "C:\\Users\\wwwCh\\source\\repos\\SurveyApi\\Entities\\Entities.csproj"
+              "D:\\Personal Project\\Survey2\\Entities\\Entities.csproj": {
+                "projectPath": "D:\\Personal Project\\Survey2\\Entities\\Entities.csproj"
               }
             }
           }
@@ -53,8 +49,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -63,25 +58,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\wwwCh\\source\\repos\\SurveyApi\\Entities\\Entities.csproj": {
+    "D:\\Personal Project\\Survey2\\Entities\\Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\wwwCh\\source\\repos\\SurveyApi\\Entities\\Entities.csproj",
+        "projectUniqueName": "D:\\Personal Project\\Survey2\\Entities\\Entities.csproj",
         "projectName": "Entities",
-        "projectPath": "C:\\Users\\wwwCh\\source\\repos\\SurveyApi\\Entities\\Entities.csproj",
-        "packagesPath": "C:\\Users\\wwwCh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\wwwCh\\Source\\Repos\\SurveyApi\\Entities\\obj\\",
+        "projectPath": "D:\\Personal Project\\Survey2\\Entities\\Entities.csproj",
+        "packagesPath": "C:\\Users\\Charles\\.nuget\\packages\\",
+        "outputPath": "D:\\Personal Project\\Survey2\\Entities\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\wwwCh\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Charles\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -118,8 +109,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -128,25 +118,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\wwwCh\\source\\repos\\SurveyApi\\LoggerService\\LoggerService.csproj": {
+    "D:\\Personal Project\\Survey2\\LoggerService\\LoggerService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\wwwCh\\source\\repos\\SurveyApi\\LoggerService\\LoggerService.csproj",
+        "projectUniqueName": "D:\\Personal Project\\Survey2\\LoggerService\\LoggerService.csproj",
         "projectName": "LoggerService",
-        "projectPath": "C:\\Users\\wwwCh\\source\\repos\\SurveyApi\\LoggerService\\LoggerService.csproj",
-        "packagesPath": "C:\\Users\\wwwCh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\wwwCh\\source\\repos\\SurveyApi\\LoggerService\\obj\\",
+        "projectPath": "D:\\Personal Project\\Survey2\\LoggerService\\LoggerService.csproj",
+        "packagesPath": "C:\\Users\\Charles\\.nuget\\packages\\",
+        "outputPath": "D:\\Personal Project\\Survey2\\LoggerService\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\wwwCh\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Charles\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -160,8 +146,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\wwwCh\\source\\repos\\SurveyApi\\Contracts\\Contracts.csproj": {
-                "projectPath": "C:\\Users\\wwwCh\\source\\repos\\SurveyApi\\Contracts\\Contracts.csproj"
+              "D:\\Personal Project\\Survey2\\Contracts\\Contracts.csproj": {
+                "projectPath": "D:\\Personal Project\\Survey2\\Contracts\\Contracts.csproj"
               }
             }
           }
@@ -187,8 +173,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -197,7 +182,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     }

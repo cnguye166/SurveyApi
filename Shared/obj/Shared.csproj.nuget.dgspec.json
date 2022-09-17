@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\wwwCh\\source\\repos\\SurveyApi\\Shared\\Shared.csproj": {}
+    "D:\\Personal Project\\Survey2\\Shared\\Shared.csproj": {}
   },
   "projects": {
-    "C:\\Users\\wwwCh\\source\\repos\\SurveyApi\\Shared\\Shared.csproj": {
+    "D:\\Personal Project\\Survey2\\Entities\\Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\wwwCh\\source\\repos\\SurveyApi\\Shared\\Shared.csproj",
-        "projectName": "Shared",
-        "projectPath": "C:\\Users\\wwwCh\\source\\repos\\SurveyApi\\Shared\\Shared.csproj",
-        "packagesPath": "C:\\Users\\wwwCh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\wwwCh\\source\\repos\\SurveyApi\\Shared\\obj\\",
+        "projectUniqueName": "D:\\Personal Project\\Survey2\\Entities\\Entities.csproj",
+        "projectName": "Entities",
+        "projectPath": "D:\\Personal Project\\Survey2\\Entities\\Entities.csproj",
+        "packagesPath": "C:\\Users\\Charles\\.nuget\\packages\\",
+        "outputPath": "D:\\Personal Project\\Survey2\\Entities\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\wwwCh\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Charles\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -43,14 +39,19 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Http": {
+              "target": "Package",
+              "version": "[2.2.2, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -59,7 +60,65 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Personal Project\\Survey2\\Shared\\Shared.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Personal Project\\Survey2\\Shared\\Shared.csproj",
+        "projectName": "Shared",
+        "projectPath": "D:\\Personal Project\\Survey2\\Shared\\Shared.csproj",
+        "packagesPath": "C:\\Users\\Charles\\.nuget\\packages\\",
+        "outputPath": "D:\\Personal Project\\Survey2\\Shared\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Charles\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\Personal Project\\Survey2\\Entities\\Entities.csproj": {
+                "projectPath": "D:\\Personal Project\\Survey2\\Entities\\Entities.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     }

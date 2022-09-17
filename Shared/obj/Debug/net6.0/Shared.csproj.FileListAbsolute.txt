@@ -1,0 +1,15 @@
+D:\Personal Project\Survey2\Shared\bin\Debug\net6.0\Shared.deps.json
+D:\Personal Project\Survey2\Shared\bin\Debug\net6.0\Shared.dll
+D:\Personal Project\Survey2\Shared\bin\Debug\net6.0\Shared.pdb
+D:\Personal Project\Survey2\Shared\obj\Debug\net6.0\Shared.csproj.AssemblyReference.cache
+D:\Personal Project\Survey2\Shared\obj\Debug\net6.0\Shared.GeneratedMSBuildEditorConfig.editorconfig
+D:\Personal Project\Survey2\Shared\obj\Debug\net6.0\Shared.AssemblyInfoInputs.cache
+D:\Personal Project\Survey2\Shared\obj\Debug\net6.0\Shared.AssemblyInfo.cs
+D:\Personal Project\Survey2\Shared\obj\Debug\net6.0\Shared.csproj.CoreCompileInputs.cache
+D:\Personal Project\Survey2\Shared\obj\Debug\net6.0\Shared.dll
+D:\Personal Project\Survey2\Shared\obj\Debug\net6.0\refint\Shared.dll
+D:\Personal Project\Survey2\Shared\obj\Debug\net6.0\Shared.pdb
+D:\Personal Project\Survey2\Shared\obj\Debug\net6.0\ref\Shared.dll
+D:\Personal Project\Survey2\Shared\bin\Debug\net6.0\Entities.dll
+D:\Personal Project\Survey2\Shared\bin\Debug\net6.0\Entities.pdb
+D:\Personal Project\Survey2\Shared\obj\Debug\net6.0\Shared.csproj.CopyComplete

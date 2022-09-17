@@ -11,7 +11,7 @@ namespace Entities.Models
         public Guid Id { get; set; }
 
         [Required(ErrorMessage = "Question Title is a required field.")]
-        [MaxLength(100, ErrorMessage = "Maximum length for the Title is 200 characters.")]
+        [MaxLength(200, ErrorMessage = "Maximum length for the Title is 200 characters.")]
         public string? Title { get; set; }
 
         public byte[]? OptionalImage { get; set; }

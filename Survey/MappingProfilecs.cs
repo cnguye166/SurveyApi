@@ -9,12 +9,18 @@ namespace Survey
         public MappingProfilecs()
         {
             CreateMap<SurveyModel, SurveyDto>();
-            CreateMap<Question, QuestionDto>();
             CreateMap<SurveyForCreationDto, SurveyModel>();
-            CreateMap<QuestionForCreationDto, Question>();
-            CreateMap<ChoiceForCreationDto, Choice>();
-            CreateMap<QuestionForUpdateDto, Question>();
             CreateMap<SurveyForUpdateDto, SurveyModel>();
+            CreateMap<SurveyModel, SurveyQuestionDto>();
+
+            CreateMap<Question, QuestionDto>();
+            CreateMap<Question, QuestionChoiceDto>();
+            CreateMap<QuestionForCreationDto, Question>();
+            CreateMap<QuestionForUpdateDto, Question>();
+
+            CreateMap<Choice, ChoiceDto>();
+            CreateMap<ChoiceForCreationDto, Choice>();
+            CreateMap<ChoiceForUpdateDto, Choice>();
         }
     }
 }

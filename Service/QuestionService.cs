@@ -107,5 +107,23 @@ namespace Service
 
         
         }
+
+        public async Task<QuestionChoiceDto> GetQuestionChoicesAsync(Guid surveyId, Guid id, bool trackChanges)
+        {
+            var survey = await _repository.Survey.GetSurveyAsync(surveyId, trackChanges);
+            if (survey is null)
+                throw new SurveyNotFoundException(surveyId);
+
+            var question = await _repository.Question.GetQuestionChoicesAsync(surveyId, id, trackChanges);
+            if (question is null)
+            {
+                throw new QuestionNotFoundException(id);
+            }
+
+            var toReturn = _mapper.Map<QuestionChoiceDto>(question);
+
+            return toReturn;
+
+        }
     }
 }

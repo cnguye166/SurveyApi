@@ -1,11 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Service.Contracts;
 using Shared.DataTransferObjects;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Survey.Presentation.Controller
 {
@@ -33,13 +29,21 @@ namespace Survey.Presentation.Controller
             return Ok(question);
         }
 
+        [HttpGet("{id:guid}/all")]
+        public async Task<IActionResult> GetQuestionEntire(Guid surveyId, Guid id)
+        {
+            var questionEntire = await _service.QuestionService.GetQuestionChoicesAsync(surveyId, id, trackChanges: false);
+            return Ok(questionEntire);
+        }
+
         [HttpPost]
         public async Task<IActionResult> CreateQuestionForSurvey(Guid surveyId, [FromBody] QuestionForCreationDto question)
         {
             if (question is null)
-            {
-                return BadRequest("QuestionForCreationDto object is null.");
-            }
+                return BadRequest("QuestionForCreationDto object is null");
+
+            if (!ModelState.IsValid)
+                return UnprocessableEntity(ModelState);
 
             var createdQuestion = await _service.QuestionService.CreateQuestionForSurveyAsync(surveyId, question, trackChanges: false);
 
@@ -51,11 +55,14 @@ namespace Survey.Presentation.Controller
         {
             await _service.QuestionService.DeleteQuestionForSurveyAsync(surveyId, id, trackChanges: false);
             return NoContent();
-        }
+        } 
 
         [HttpPut("{id:guid}")]
         public async Task<IActionResult> UpdateQuestionForSurvey(Guid surveyId, Guid id, [FromBody] QuestionForUpdateDto questionForUpdate)
         {
+            if (questionForUpdate is null)
+                return BadRequest("QuestionForUpdateDto object is null");
+
             await _service.QuestionService.UpdateQuestionForSurveyAsync(surveyId, id, questionForUpdate, surveyTrackChanges: false, questionTrackChanges: true);
 
             return NoContent();

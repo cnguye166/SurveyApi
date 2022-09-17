@@ -1,11 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Service.Contracts;
 using Shared.DataTransferObjects;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Survey.Presentation.Controller
 {
@@ -36,11 +32,23 @@ namespace Survey.Presentation.Controller
             return Ok(survey);
         }
 
+
+        [HttpGet("{id:guid}/all")]
+        public async Task<IActionResult> GetSurveyEntire(Guid id)
+        {
+            var surveyEntire = await _service.SurveyService.GetSurveyQuestionsChoicesAsync(id, trackChanges: false);
+            return Ok(surveyEntire);
+        }
+
+
         [HttpPost]
         public async Task<IActionResult> CreateSurvey([FromBody] SurveyForCreationDto survey)
         {
             if (survey is null)
                 return BadRequest("SurveyForCreationDto object is null");
+
+            if (!ModelState.IsValid)
+                return UnprocessableEntity(ModelState);
 
             var createdSurvey = await _service.SurveyService.CreateSurveyAsync(survey);
 
@@ -63,5 +71,8 @@ namespace Survey.Presentation.Controller
 
             return NoContent();
         }
+
+
+
     }
 }

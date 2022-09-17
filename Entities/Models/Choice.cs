@@ -14,8 +14,7 @@ namespace Entities.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Choice title is a required field.")]
-        [MaxLength(100, ErrorMessage = "Maximum length for an answer choice is 60 characters.")]
-
+        [MaxLength(200, ErrorMessage = "Maximum length for an answer choice is 200 characters.")]
         public string? Title { get; set; }
 
         [ForeignKey(nameof(Question))]
