@@ -11,8 +11,8 @@ namespace Shared.DataTransferObjects
     {
         [Required(ErrorMessage = "Question Title is a required field.")]
         [MaxLength(200, ErrorMessage = "Maximum length for the Title is 200 characters.")]
-        public string Title { get; init; }
-        public IEnumerable<ChoiceForCreationDto> Choices { get; init; }
+        public string? Title { get; init; }
+        public IEnumerable<ChoiceForCreationDto>? Choices { get; init; }
     };
 
 }

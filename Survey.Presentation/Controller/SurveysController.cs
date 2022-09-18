@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Service.Contracts;
 using Shared.DataTransferObjects;
-
+using Shared.RequestFeatures;
+using Survey.Presentation.ModelBinders;
+using System.Text.Json;
 
 namespace Survey.Presentation.Controller
 {
@@ -17,11 +19,14 @@ namespace Survey.Presentation.Controller
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetSurveys()
+        public async Task<IActionResult> GetSurveys([FromQuery] SurveyParameters surveyParameters)
         {
            
-            var surveys = await _service.SurveyService.GetAllSurveysAsync(trackChanges: false);
-            return Ok(surveys);
+            var pagedResult = await _service.SurveyService.GetAllSurveysAsync(surveyParameters, trackChanges: false);
+
+            Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(pagedResult.metaData));
+
+            return Ok(pagedResult.surveys);
             
         }
 
@@ -30,6 +35,13 @@ namespace Survey.Presentation.Controller
         {
             var survey = await _service.SurveyService.GetSurveyAsync(id, trackChanges: false);
             return Ok(survey);
+        }
+
+        [HttpGet("collection/({ids})", Name = "SurveyCollection")]
+        public async Task<IActionResult> GetSurveyCollection([ModelBinder(BinderType = typeof(ArrayModelBinder))]IEnumerable<Guid> ids)
+        {
+            var surveys = await _service.SurveyService.GetByIdsAsync(ids, trackChanges: false);
+            return Ok(surveys);
         }
 
 
@@ -53,6 +65,19 @@ namespace Survey.Presentation.Controller
             var createdSurvey = await _service.SurveyService.CreateSurveyAsync(survey);
 
             return CreatedAtRoute("SurveyById", new { id = createdSurvey.Id }, createdSurvey);
+        }
+
+        [HttpPost("collection")]
+        public async Task<IActionResult> CreateSurveyCollection([FromBody] IEnumerable<SurveyForCreationDto> surveyCollection)
+        {
+            if (surveyCollection is null)
+                return BadRequest("IEnumerable<SurveyForCreationDto> object is null");
+
+            if (!ModelState.IsValid)
+                return UnprocessableEntity(ModelState);
+
+            var createdSurveyCollection = await _service.SurveyService.CreateSurveyCollectionAsync(surveyCollection);
+            return CreatedAtRoute("SurveyCollection", new { createdSurveyCollection.ids }, createdSurveyCollection.surveys);
         }
 
         [HttpDelete("{id:guid}")]

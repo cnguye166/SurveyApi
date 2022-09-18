@@ -125,5 +125,44 @@ namespace Service
             return toReturn;
 
         }
+
+        public async Task<IEnumerable<QuestionDto>> GetByIdsAsync(Guid surveyId, IEnumerable<Guid> ids, bool trackChanges)
+        {
+            if (ids is null)
+                throw new IdParametersBadRequestException();
+
+            var questionEntities = await _repository.Question.GetByIdsAsync(surveyId, ids, trackChanges);
+
+            if (questionEntities is null)
+                throw new CollectionByIdsBadRequestException();
+
+            var toReturn = _mapper.Map<IEnumerable<QuestionDto>>(questionEntities);
+
+            return toReturn;
+        }
+
+        public async Task<(IEnumerable<QuestionDto> questions, string ids)> CreateQuestionCollectionAsync(Guid surveyId, IEnumerable<QuestionForCreationDto> questionCollection)
+        {
+            if (questionCollection is null)
+                throw new QuestionCollectionBadRequest();
+
+            var survey = await _repository.Survey.GetSurveyAsync(surveyId, trackChanges:false);
+            if (survey is null)
+                throw new SurveyNotFoundException(surveyId);
+
+            var questionEntities = _mapper.Map<IEnumerable<Question>>(questionCollection);
+
+            foreach (var questionEntity in questionEntities)
+            {
+                _repository.Question.CreateQuestionForSurvey(surveyId, questionEntity);
+            }
+            await _repository.SaveAsync();
+
+            var questionToReturn = _mapper.Map<IEnumerable<QuestionDto>>(questionEntities);
+            var ids = string.Join(",", questionToReturn.Select(q => q.id));
+
+            return (questions: questionToReturn, ids: ids);
+            
+        }
     }
 }

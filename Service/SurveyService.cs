@@ -4,6 +4,7 @@ using Entities.Exceptions;
 using Entities.Models;
 using Service.Contracts;
 using Shared.DataTransferObjects;
+using Shared.RequestFeatures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -61,12 +62,13 @@ namespace Service
             return SurveyQuestionDto;
         }
 
-        public async Task<IEnumerable<SurveyDto>> GetAllSurveysAsync(bool trackChanges)
+        public async Task<(IEnumerable<SurveyDto> surveys, MetaData metaData)> GetAllSurveysAsync(SurveyParameters surveyParameters, bool trackChanges)
         {
 
-            var surveys = await _repository.Survey.GetAllSurveysAsync(trackChanges);
+            var surveys = await _repository.Survey.GetAllSurveysAsync(surveyParameters, trackChanges);
             var surveysDto = _mapper.Map<IEnumerable<SurveyDto>>(surveys);
-            return surveysDto;
+
+            return (surveysDto, surveys.MetaData);
             
            
         }
@@ -95,6 +97,40 @@ namespace Service
 
 
 
+        }
+
+        public async Task<IEnumerable<SurveyDto>> GetByIdsAsync(IEnumerable<Guid> ids, bool trackChanges)
+        {
+            if (ids is null)
+                throw new IdParametersBadRequestException();
+
+            var surveyEntities = await _repository.Survey.GetByIdsAsync(ids, trackChanges);
+
+            if(surveyEntities is null)
+                throw new CollectionByIdsBadRequestException();
+
+            var surveyEntitiesToReturn = _mapper.Map<IEnumerable<SurveyDto>>(surveyEntities);
+
+            return surveyEntitiesToReturn;
+
+        }
+        public async Task<(IEnumerable<SurveyDto> surveys, string ids)> CreateSurveyCollectionAsync(IEnumerable<SurveyForCreationDto> surveyCollection)
+        {
+            if (surveyCollection is null)
+                throw new SurveyCollectionBadRequest();
+
+            var surveyEntities = _mapper.Map<IEnumerable<SurveyModel>>(surveyCollection);
+
+            foreach (var survey in surveyEntities)
+            {
+                _repository.Survey.CreateSurvey(survey);
+            }
+            await _repository.SaveAsync();
+
+            var surveyEntitiesToReturn = _mapper.Map<IEnumerable<SurveyDto>>(surveyEntities);
+            var ids = string.Join(",", surveyEntitiesToReturn.Select(s => s.Id));
+
+            return (surveys: surveyEntitiesToReturn, ids: ids);
         }
     }
 }

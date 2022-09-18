@@ -1,4 +1,5 @@
 ﻿using Entities.Models;
+using Shared.RequestFeatures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,10 @@ namespace Contracts
 {
     public interface ISurveyRepository
     {
-        Task<IEnumerable<SurveyModel>> GetAllSurveysAsync(bool trackChanges);
+        Task<PagedList<SurveyModel>> GetAllSurveysAsync(SurveyParameters surveyParameters, bool trackChanges);
         Task<SurveyModel> GetSurveyQuestionsChoicesAsync(Guid surveyId, bool trackChanges);
 
+        Task<IEnumerable<SurveyModel>> GetByIdsAsync(IEnumerable<Guid> ids, bool trackChanges);
 
 
         Task<SurveyModel> GetSurveyAsync(Guid surveyId, bool trackChanges);

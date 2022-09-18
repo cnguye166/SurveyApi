@@ -26,6 +26,12 @@ namespace Repository
             Delete(question);
         }
 
+        public async Task<IEnumerable<Question>> GetByIdsAsync(Guid surveyId, IEnumerable<Guid> ids, bool trackChanges)
+        {
+            return await FindByCondition(s => ids.Contains(s.Id) && s.SurveyId.Equals(surveyId), trackChanges)
+                .ToListAsync();
+        }
+
         public async Task<Question> GetQuestionAsync(Guid surveyId, Guid id, bool trackChanges)
         {
             return await FindByCondition(e => e.SurveyId.Equals(surveyId) && e.Id.Equals(id), trackChanges).SingleOrDefaultAsync();

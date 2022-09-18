@@ -18,9 +18,9 @@ namespace Entities.Models
 
         public ICollection<Choice>? Choices { get; set; }
 
-        [ForeignKey(nameof(Survey))]
+        [ForeignKey(nameof(SurveyModel))]
         public Guid SurveyId {get; set; }
-        public SurveyModel? Survey { get; set; }
+        public SurveyModel? SurveyModel { get; set; }
     }
 
 }

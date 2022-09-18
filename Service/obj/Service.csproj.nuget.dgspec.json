@@ -30,6 +30,9 @@
             "projectReferences": {
               "D:\\Personal Project\\Survey2\\Entities\\Entities.csproj": {
                 "projectPath": "D:\\Personal Project\\Survey2\\Entities\\Entities.csproj"
+              },
+              "D:\\Personal Project\\Survey2\\Shared\\Shared.csproj": {
+                "projectPath": "D:\\Personal Project\\Survey2\\Shared\\Shared.csproj"
               }
             }
           }

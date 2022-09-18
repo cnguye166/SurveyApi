@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
 using Service.Contracts;
 using Shared.DataTransferObjects;
-
+using Survey.Presentation.ModelBinders;
 
 namespace Survey.Presentation.Controller
 {
@@ -29,6 +30,14 @@ namespace Survey.Presentation.Controller
             return Ok(question);
         }
 
+        [HttpGet("collection/({ids})", Name = "QuestionCollection")]
+        public async Task<IActionResult> GetQuestionCollection(Guid surveyId, [ModelBinder(BinderType = typeof(ArrayModelBinder))] IEnumerable<Guid> ids)
+        {
+            var questions = await _service.QuestionService.GetByIdsAsync(surveyId, ids, trackChanges:false);
+            return Ok(questions);
+        }
+
+
         [HttpGet("{id:guid}/all")]
         public async Task<IActionResult> GetQuestionEntire(Guid surveyId, Guid id)
         {
@@ -48,6 +57,21 @@ namespace Survey.Presentation.Controller
             var createdQuestion = await _service.QuestionService.CreateQuestionForSurveyAsync(surveyId, question, trackChanges: false);
 
             return CreatedAtRoute("GetQuestionForSurvey", new { surveyId, id = createdQuestion.id }, createdQuestion);
+        }
+
+
+
+        [HttpPost("collection")]
+        public async Task<IActionResult> CreateQuestionsCollection(Guid surveyId, [FromBody] IEnumerable<QuestionForCreationDto> questionCollection)
+        {
+            if (questionCollection is null)
+                return BadRequest("IEnumerable<QuestionForCreationDto> object is null");
+            if (!ModelState.IsValid)
+                return UnprocessableEntity(ModelState);
+
+            var createdQuestionCollection = await _service.QuestionService.CreateQuestionCollectionAsync(surveyId, questionCollection);
+
+            return CreatedAtRoute("QuestionCollection", new {surveyId, ids = createdQuestionCollection.ids }, createdQuestionCollection.questions);
         }
 
         [HttpDelete("{id:guid}")]

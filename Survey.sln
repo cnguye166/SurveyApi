@@ -23,9 +23,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service.Contracts", "Servic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service", "Service\Service.csproj", "{D80956F7-F717-4590-8FDD-7B1FFE9FA699}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Survey.Presentation", "Survey.Presentation\Survey.Presentation.csproj", "{96924DD3-BF81-44A6-A174-1166817E07AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Survey.Presentation", "Survey.Presentation\Survey.Presentation.csproj", "{96924DD3-BF81-44A6-A174-1166817E07AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{4C3ECC6B-13ED-4511-BF2C-8D8D610E7F0D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared", "Shared\Shared.csproj", "{4C3ECC6B-13ED-4511-BF2C-8D8D610E7F0D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9EA59F32-CF5D-4BAF-BCA0-B5B7B5044389}"
+	ProjectSection(SolutionItems) = preProject
+		ToDo.txt = ToDo.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

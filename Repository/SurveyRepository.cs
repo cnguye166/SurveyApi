@@ -1,6 +1,7 @@
 ﻿using Contracts;
 using Entities.Models;
 using Microsoft.EntityFrameworkCore;
+using Shared.RequestFeatures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,11 +28,14 @@ namespace Repository
             Delete(survey);
         }
 
-        public async Task<IEnumerable<SurveyModel>> GetAllSurveysAsync(bool trackChanges)
+        public async Task<PagedList<SurveyModel>> GetAllSurveysAsync(SurveyParameters surveyParameters, bool trackChanges)
         {
-            return await FindAll(trackChanges)
+            var surveys =  await FindAll(trackChanges)
                 .OrderBy(s => s.Title)
                 .ToListAsync();
+
+            return PagedList<SurveyModel>
+                .ToPagedList(surveys, surveyParameters.PageNumber, surveyParameters.PageSize);
         }
 
         public async Task<IEnumerable<SurveyModel>> GetAllSurveysQuestionsAsync(bool trackChanges)
@@ -55,6 +59,12 @@ namespace Repository
         public async Task<SurveyModel> GetSurveyAsync(Guid surveyId, bool trackChanges)
         {
             return await FindByCondition(s => s.Id.Equals(surveyId), trackChanges).SingleOrDefaultAsync();
+        }
+
+        public async Task<IEnumerable<SurveyModel>> GetByIdsAsync(IEnumerable<Guid> ids, bool trackChanges)
+        {
+            return await FindByCondition(s => ids.Contains(s.Id), trackChanges)
+                .ToListAsync();
         }
     }
 }

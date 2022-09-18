@@ -12,6 +12,7 @@ namespace Contracts
         Task<IEnumerable<Question>> GetQuestionsAsync(Guid surveyId, bool trackChanges);
         Task<Question> GetQuestionChoicesAsync(Guid surveyId, Guid id, bool trackChanges);
         Task<Question> GetQuestionAsync(Guid surveyId, Guid id, bool trackChanges);
+        Task<IEnumerable<Question>> GetByIdsAsync(Guid surveyId, IEnumerable<Guid> ids, bool trackChanges);
         void CreateQuestionForSurvey(Guid surveyId, Question question);
         void DeleteQuestion(Question question);
 

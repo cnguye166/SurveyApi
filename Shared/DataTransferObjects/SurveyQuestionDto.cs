@@ -12,6 +12,6 @@ namespace Shared.DataTransferObjects
         public string? Title { get; init; }
         public string? Topic { get; init; }
 
-        public IEnumerable<QuestionChoiceDto> Questions { get; init; }
+        public IEnumerable<QuestionChoiceDto>? Questions { get; init; }
     }
 }
