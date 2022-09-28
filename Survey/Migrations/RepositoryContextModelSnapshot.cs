@@ -22,11 +22,43 @@ namespace Survey.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Entities.Models.Choice", b =>
+            modelBuilder.Entity("Entities.Models.Answer", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int?>("ChoiceId")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<string>("ChoiceTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("FilledSurveyModelId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("QuestionId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("QuestionTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FilledSurveyModelId");
+
+                    b.ToTable("Answers");
+                });
+
+            modelBuilder.Entity("Entities.Models.Choice", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("ChoiceId");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
@@ -35,94 +67,31 @@ namespace Survey.Migrations
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("QuestionId");
 
                     b.ToTable("Choices");
+                });
 
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            QuestionId = new Guid("80abbca8-664d-4b20-b5de-024705497d4a"),
-                            Title = "0"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            QuestionId = new Guid("80abbca8-664d-4b20-b5de-024705497d4a"),
-                            Title = "1"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            QuestionId = new Guid("80abbca8-664d-4b20-b5de-024705497d4a"),
-                            Title = "2"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            QuestionId = new Guid("80abbca8-664d-4b20-b5de-024705497d4a"),
-                            Title = "3"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            QuestionId = new Guid("80abbca8-664d-4b20-b5de-024705497d4a"),
-                            Title = "4"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            QuestionId = new Guid("80abbca8-664d-4b20-b5de-024705497d4a"),
-                            Title = "5"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            QuestionId = new Guid("86dba8c0-d178-41e7-938c-ed49778fb52a"),
-                            Title = "Taco Bell"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            QuestionId = new Guid("86dba8c0-d178-41e7-938c-ed49778fb52a"),
-                            Title = "McDonald's"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            QuestionId = new Guid("86dba8c0-d178-41e7-938c-ed49778fb52a"),
-                            Title = "Burger King"
-                        },
-                        new
-                        {
-                            Id = 10,
-                            QuestionId = new Guid("86dba8c0-d178-41e7-938c-ed49778fb52a"),
-                            Title = "Sonic"
-                        },
-                        new
-                        {
-                            Id = 11,
-                            QuestionId = new Guid("021ca3c1-0deb-4afd-ae94-2159a8479811"),
-                            Title = "Not very confident"
-                        },
-                        new
-                        {
-                            Id = 12,
-                            QuestionId = new Guid("021ca3c1-0deb-4afd-ae94-2159a8479811"),
-                            Title = "Somewhat confident"
-                        },
-                        new
-                        {
-                            Id = 13,
-                            QuestionId = new Guid("021ca3c1-0deb-4afd-ae94-2159a8479811"),
-                            Title = "Very confident"
-                        });
+            modelBuilder.Entity("Entities.Models.FilledSurveyModel", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("FilledSurveyModelId");
+
+                    b.Property<Guid>("SurveyId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SurveyId");
+
+                    b.ToTable("FilledSurveys");
                 });
 
             modelBuilder.Entity("Entities.Models.Question", b =>
@@ -140,42 +109,26 @@ namespace Survey.Migrations
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("SurveyId");
 
                     b.ToTable("Questions");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("80abbca8-664d-4b20-b5de-024705497d4a"),
-                            SurveyId = new Guid("c9d4c053-49b6-410c-bc78-2d54a9991870"),
-                            Title = "How would you rate McDonalds? (1-5)"
-                        },
-                        new
-                        {
-                            Id = new Guid("86dba8c0-d178-41e7-938c-ed49778fb52a"),
-                            SurveyId = new Guid("c9d4c053-49b6-410c-bc78-2d54a9991870"),
-                            Title = "Out of these fast food, which have you visited the most?"
-                        },
-                        new
-                        {
-                            Id = new Guid("021ca3c1-0deb-4afd-ae94-2159a8479811"),
-                            SurveyId = new Guid("3d490a70-94ce-4d15-9494-5248280c2ce3"),
-                            Title = "How confident are you on binary trees?"
-                        });
                 });
 
-            modelBuilder.Entity("Entities.Models.Survey", b =>
+            modelBuilder.Entity("Entities.Models.SurveyModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("SurveyId");
+
+                    b.Property<string>("CreatorId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -183,25 +136,249 @@ namespace Survey.Migrations
                         .HasColumnType("nvarchar(60)");
 
                     b.Property<string>("Topic")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Surveys");
+                });
+
+            modelBuilder.Entity("Entities.Models.User", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("RefreshToken")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("RefreshTokenExpireTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedName")
+                        .IsUnique()
+                        .HasDatabaseName("RoleNameIndex")
+                        .HasFilter("[NormalizedName] IS NOT NULL");
+
+                    b.ToTable("AspNetRoles", (string)null);
 
                     b.HasData(
                         new
                         {
-                            Id = new Guid("c9d4c053-49b6-410c-bc78-2d54a9991870"),
-                            Title = "Top Fast Food in the United States",
-                            Topic = "Health Science"
+                            Id = "5886f37c-a5ce-4d1c-baf9-23f7fc329609",
+                            ConcurrencyStamp = "8235c958-d970-4ff5-917b-a2299c86c447",
+                            Name = "User",
+                            NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = new Guid("3d490a70-94ce-4d15-9494-5248280c2ce3"),
-                            Title = "COSC 3212: Survey for Exam 1",
-                            Topic = "Education"
+                            Id = "cbaf6668-7c8c-486d-acf2-16cd5f0b61e2",
+                            ConcurrencyStamp = "8f8082db-71c7-4bf5-8f8a-0ee23a6144f0",
+                            Name = "Administrator",
+                            NormalizedName = "ADMINISTRATOR"
                         });
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RoleId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetRoleClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+                {
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProviderKey")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProviderDisplayName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("LoginProvider", "ProviderKey");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserLogins", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("RoleId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("UserId", "RoleId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetUserRoles", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId", "LoginProvider", "Name");
+
+                    b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("Entities.Models.Answer", b =>
+                {
+                    b.HasOne("Entities.Models.FilledSurveyModel", "FilledSurveyModel")
+                        .WithMany("Answers")
+                        .HasForeignKey("FilledSurveyModelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("FilledSurveyModel");
                 });
 
             modelBuilder.Entity("Entities.Models.Choice", b =>
@@ -215,15 +392,82 @@ namespace Survey.Migrations
                     b.Navigation("Question");
                 });
 
+            modelBuilder.Entity("Entities.Models.FilledSurveyModel", b =>
+                {
+                    b.HasOne("Entities.Models.SurveyModel", "SurveyModel")
+                        .WithMany()
+                        .HasForeignKey("SurveyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("SurveyModel");
+                });
+
             modelBuilder.Entity("Entities.Models.Question", b =>
                 {
-                    b.HasOne("Entities.Models.Survey", "Survey")
+                    b.HasOne("Entities.Models.SurveyModel", "SurveyModel")
                         .WithMany("Questions")
                         .HasForeignKey("SurveyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Survey");
+                    b.Navigation("SurveyModel");
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                {
+                    b.HasOne("Entities.Models.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+                {
+                    b.HasOne("Entities.Models.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Entities.Models.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+                {
+                    b.HasOne("Entities.Models.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Entities.Models.FilledSurveyModel", b =>
+                {
+                    b.Navigation("Answers");
                 });
 
             modelBuilder.Entity("Entities.Models.Question", b =>
@@ -231,7 +475,7 @@ namespace Survey.Migrations
                     b.Navigation("Choices");
                 });
 
-            modelBuilder.Entity("Entities.Models.Survey", b =>
+            modelBuilder.Entity("Entities.Models.SurveyModel", b =>
                 {
                     b.Navigation("Questions");
                 });

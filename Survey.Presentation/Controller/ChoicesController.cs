@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Service.Contracts;
 using Shared.DataTransferObjects;
 using System;
@@ -35,16 +36,20 @@ namespace Survey.Presentation.Controller
         }
 
         [HttpPost]
+        [Authorize]
+
         public async Task<IActionResult> CreateChoiceForQuestion(Guid surveyId, Guid questionId, [FromBody] ChoiceForCreationDto choiceForCreation)
         {
             if (choiceForCreation is null)
                 return BadRequest("ChoiceForCreationDto object is null");
 
             var createdChoice = await _service.ChoiceService.CreateChoiceForQuestionAsync(surveyId, questionId, choiceForCreation, trackChanges: false);
-            return CreatedAtRoute("GetChoiceForQuestion", new {surveyId, questionId, id = createdChoice.id}, createdChoice);
+            return CreatedAtRoute("GetChoiceForQuestion", new {surveyId, questionId, id = createdChoice.Id}, createdChoice);
         }
 
+        [Authorize]
         [HttpDelete("{id:int}")]
+
         public async Task<IActionResult> DeleteChoiceForQuestion(Guid surveyId, Guid questionId, int id)
         {
             await _service.ChoiceService.DeleteChoiceForQuestionAsync(surveyId, questionId, id, trackChanges: false);
@@ -52,6 +57,8 @@ namespace Survey.Presentation.Controller
         }
 
         [HttpPut("{id:int}")]
+        [Authorize]
+
         public async Task<IActionResult> UpdateChoiceForQuestion(Guid surveyId, Guid questionId, int id, [FromBody] ChoiceForUpdateDto choiceForUpdate)
         {
             if (choiceForUpdate is null)

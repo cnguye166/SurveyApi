@@ -18,6 +18,12 @@ builder.Services.ConfigureLoggerService();
 builder.Services.ConfigureSqlContext(builder.Configuration);
 builder.Services.ConfigureRepositoryManager();
 builder.Services.ConfigureServiceManager();
+builder.Services.AddAuthentication();
+builder.Services.ConfigureIdentity();
+builder.Services.ConfigureJWT(builder.Configuration);
+builder.Services.ConfigureSwagger();
+
+
 
 // Page 116. Enable custom responses with different messages and status code
 builder.Services.Configure<ApiBehaviorOptions>(options =>
@@ -48,8 +54,14 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions
 });
 app.UseCors("CorsPolicy");
 
-
+app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseSwagger();
+app.UseSwaggerUI(s =>
+{
+    s.SwaggerEndpoint("/swagger/v1/swagger.json", "Survey API v1");
+});
 
 app.MapControllers();
 

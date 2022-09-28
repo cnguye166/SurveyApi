@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Service.Contracts;
 using Shared.DataTransferObjects;
 using Shared.RequestFeatures;
@@ -53,7 +54,12 @@ namespace Survey.Presentation.Controller
         }
 
 
+
+        [Authorize]
         [HttpPost]
+        [ProducesResponseType(201)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(422)]
         public async Task<IActionResult> CreateSurvey([FromBody] SurveyForCreationDto survey)
         {
             if (survey is null)
@@ -62,12 +68,19 @@ namespace Survey.Presentation.Controller
             if (!ModelState.IsValid)
                 return UnprocessableEntity(ModelState);
 
-            var createdSurvey = await _service.SurveyService.CreateSurveyAsync(survey);
-
+            var userId = _service.UserProviderService.GetUserId();
+            var createdSurvey = await _service.SurveyService.CreateSurveyAsync(userId, survey);
+            
             return CreatedAtRoute("SurveyById", new { id = createdSurvey.Id }, createdSurvey);
         }
 
+
+
+        [Authorize]
         [HttpPost("collection")]
+        [ProducesResponseType(201)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(422)]
         public async Task<IActionResult> CreateSurveyCollection([FromBody] IEnumerable<SurveyForCreationDto> surveyCollection)
         {
             if (surveyCollection is null)
@@ -80,6 +93,11 @@ namespace Survey.Presentation.Controller
             return CreatedAtRoute("SurveyCollection", new { createdSurveyCollection.ids }, createdSurveyCollection.surveys);
         }
 
+
+
+        [Authorize]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(404)]
         [HttpDelete("{id:guid}")]
         public async Task<IActionResult> DeleteSurvey(Guid id)
         {
@@ -87,6 +105,10 @@ namespace Survey.Presentation.Controller
             return NoContent();
         }
 
+        [Authorize]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
         [HttpPut("{id:guid}")]
         public async Task<IActionResult> UpdateSurvey(Guid id, SurveyForUpdateDto survey)
         {

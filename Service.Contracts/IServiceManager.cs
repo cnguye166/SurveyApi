@@ -11,5 +11,8 @@ namespace Service.Contracts
         ISurveyService SurveyService { get; }
         IChoiceService ChoiceService { get; }
         IQuestionService QuestionService { get; }
+        IFilledSurveyService FilledSurveyService { get; }
+        IAuthenticationService AuthenticationService { get; }
+        IUserProviderService UserProviderService { get; }
     }
 }

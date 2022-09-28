@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Shared.DataTransferObjects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,6 @@ namespace Shared.DataTransferObjects
         public Guid Id { get; init; }
         public string? Title { get; init; }
         public string? Topic { get; init; }
-
         public IEnumerable<QuestionChoiceDto>? Questions { get; init; }
     }
 }

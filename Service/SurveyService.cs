@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using Contracts;
 using Entities.Exceptions;
+using Entities.Exceptions.BadRequest;
+using Entities.Exceptions.NotFound;
 using Entities.Models;
 using Service.Contracts;
 using Shared.DataTransferObjects;
@@ -20,6 +22,7 @@ namespace Service
         private readonly IMapper _mapper;
 
 
+
         public SurveyService(IRepositoryManager repository, ILoggerManager logger, IMapper mapper)
         {
             _repository = repository;
@@ -27,9 +30,11 @@ namespace Service
             _mapper = mapper;
         }
 
-        public async Task<SurveyDto> CreateSurveyAsync(SurveyForCreationDto survey)
+        public async Task<SurveyDto> CreateSurveyAsync(string userId, SurveyForCreationDto survey)
         {
-            var surveyEntity = _mapper.Map<SurveyModel>(survey);
+            
+            var surveyEntity = _mapper.Map<SurveyModel>((userId, survey));
+
             _repository.Survey.CreateSurvey(surveyEntity);
             await _repository.SaveAsync();
 

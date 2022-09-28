@@ -13,16 +13,18 @@ namespace Entities.Models
         [Key]
         public int Id { get; set; }
 
-        [ForeignKey(nameof(Question))]
+        [Required]
+        public int? ChoiceId { get; set; }
+        public string? ChoiceTitle { get; set; }
+
+
+        [Required]
         public Guid QuestionId { get; set; }
-        public Question? Question { get; set; }
-
-        [ForeignKey(nameof(Choice))]
-        public ICollection<int>? ChoicesId { get; set; }
+        public string? QuestionTitle { get; set; }
 
 
-        [ForeignKey(nameof(CompletedSurveyModel))]
-        public Guid CompletedSurveyModelId { get; set; }
-        public SurveyModel? CompletedSurveyModel { get; set; }
+        [ForeignKey(nameof(FilledSurveyModel))]
+        public Guid FilledSurveyModelId { get; set; }
+        public FilledSurveyModel? FilledSurveyModel { get; set; }
     }
 }

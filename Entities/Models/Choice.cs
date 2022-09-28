@@ -11,6 +11,7 @@ namespace Entities.Models
     public class Choice
     {
         [Key]
+        [Column("ChoiceId")]
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Choice title is a required field.")]

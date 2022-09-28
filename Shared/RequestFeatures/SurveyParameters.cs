@@ -9,5 +9,7 @@ namespace Shared.RequestFeatures
     public class SurveyParameters : RequestParameters
     {
 
+        public string? SearchCreatorId { get; set; }
+
     }
 }

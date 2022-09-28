@@ -150,3 +150,14 @@ D:\Personal Project\Survey2\Survey\obj\Debug\net6.0\refint\Survey.dll
 D:\Personal Project\Survey2\Survey\obj\Debug\net6.0\Survey.pdb
 D:\Personal Project\Survey2\Survey\obj\Debug\net6.0\Survey.genruntimeconfig.cache
 D:\Personal Project\Survey2\Survey\obj\Debug\net6.0\ref\Survey.dll
+D:\Personal Project\Survey2\Survey\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\Personal Project\Survey2\Survey\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\Personal Project\Survey2\Survey\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\Personal Project\Survey2\Survey\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
+D:\Personal Project\Survey2\Survey\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll
+D:\Personal Project\Survey2\Survey\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Personal Project\Survey2\Survey\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
+D:\Personal Project\Survey2\Survey\bin\Debug\net6.0\Microsoft.OpenApi.dll
+D:\Personal Project\Survey2\Survey\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\Personal Project\Survey2\Survey\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\Personal Project\Survey2\Survey\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll

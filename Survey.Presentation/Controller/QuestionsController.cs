@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
 using Service.Contracts;
 using Shared.DataTransferObjects;
@@ -45,7 +46,9 @@ namespace Survey.Presentation.Controller
             return Ok(questionEntire);
         }
 
+        [Authorize]
         [HttpPost]
+
         public async Task<IActionResult> CreateQuestionForSurvey(Guid surveyId, [FromBody] QuestionForCreationDto question)
         {
             if (question is null)
@@ -56,12 +59,14 @@ namespace Survey.Presentation.Controller
 
             var createdQuestion = await _service.QuestionService.CreateQuestionForSurveyAsync(surveyId, question, trackChanges: false);
 
-            return CreatedAtRoute("GetQuestionForSurvey", new { surveyId, id = createdQuestion.id }, createdQuestion);
+            return CreatedAtRoute("GetQuestionForSurvey", new { surveyId, id = createdQuestion.Id }, createdQuestion);
         }
 
 
 
+        [Authorize]
         [HttpPost("collection")]
+
         public async Task<IActionResult> CreateQuestionsCollection(Guid surveyId, [FromBody] IEnumerable<QuestionForCreationDto> questionCollection)
         {
             if (questionCollection is null)
@@ -74,14 +79,18 @@ namespace Survey.Presentation.Controller
             return CreatedAtRoute("QuestionCollection", new {surveyId, ids = createdQuestionCollection.ids }, createdQuestionCollection.questions);
         }
 
+        [Authorize]
         [HttpDelete("{id:guid}")]
+
         public async Task<IActionResult> DeleteQuestionForSurvey(Guid surveyId, Guid id)
         {
             await _service.QuestionService.DeleteQuestionForSurveyAsync(surveyId, id, trackChanges: false);
             return NoContent();
         } 
 
+        [Authorize]
         [HttpPut("{id:guid}")]
+
         public async Task<IActionResult> UpdateQuestionForSurvey(Guid surveyId, Guid id, [FromBody] QuestionForUpdateDto questionForUpdate)
         {
             if (questionForUpdate is null)

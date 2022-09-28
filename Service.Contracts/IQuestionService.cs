@@ -16,7 +16,6 @@ namespace Service.Contracts
         Task<(IEnumerable<QuestionDto> questions, string ids)> CreateQuestionCollectionAsync(Guid surveyId, IEnumerable<QuestionForCreationDto> questionCollection);
         Task<QuestionDto> CreateQuestionForSurveyAsync(Guid surveyId, QuestionForCreationDto questionForCreation, bool trackChanges);
         Task DeleteQuestionForSurveyAsync(Guid surveyId, Guid id, bool trackChanges);
-
         Task UpdateQuestionForSurveyAsync(Guid surveyId, Guid id, QuestionForUpdateDto questionForUpdate, bool surveyTrackChanges, bool questionTrackChanges);
     }
 }

@@ -11,6 +11,7 @@ namespace Contracts
         ISurveyRepository Survey { get; }
         IQuestionRepository Question { get; }
         IChoiceRepository Choice { get; }
+        IFilledSurveyRepository FilledSurvey { get; }
         Task SaveAsync();
     }
 }

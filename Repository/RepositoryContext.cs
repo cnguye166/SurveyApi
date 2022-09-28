@@ -1,15 +1,12 @@
 ﻿using Entities.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Repository.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Repository
 {
-    public class RepositoryContext: DbContext
+    public class RepositoryContext : IdentityDbContext<User>
     {
         public RepositoryContext(DbContextOptions options):base(options)
         {
@@ -18,13 +15,18 @@ namespace Repository
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new SurveyConfiguration());
-            modelBuilder.ApplyConfiguration(new QuestionConfiguration());
-            modelBuilder.ApplyConfiguration(new ChoiceConfiguration());
+            base.OnModelCreating(modelBuilder);
+
+            //modelBuilder.ApplyConfiguration(new SurveyConfiguration());
+            //modelBuilder.ApplyConfiguration(new QuestionConfiguration());
+            //modelBuilder.ApplyConfiguration(new ChoiceConfiguration());
+            modelBuilder.ApplyConfiguration(new RoleConfiguration());
 
         }
-        public DbSet<Question>? Questions { get; set; }
         public DbSet<SurveyModel>? Surveys { get; set; }
+        public DbSet<FilledSurveyModel>? FilledSurveys { get; set; }
+        public DbSet<Question>? Questions { get; set; }
+        public DbSet<Answer>? Answers { get; set; }
         public DbSet<Choice>? Choices { get; set; }
 
     }

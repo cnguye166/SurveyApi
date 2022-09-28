@@ -8,7 +8,7 @@ namespace Shared.DataTransferObjects
 {
     public record ChoiceDto
     {
-        public int id { get; init; }
+        public int Id { get; init; }
         public string? Title { get; init; }
     }
 }

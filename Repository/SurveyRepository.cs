@@ -1,6 +1,7 @@
 ﻿using Contracts;
 using Entities.Models;
 using Microsoft.EntityFrameworkCore;
+using Repository.Extensions;
 using Shared.RequestFeatures;
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,7 @@ namespace Repository
         public async Task<PagedList<SurveyModel>> GetAllSurveysAsync(SurveyParameters surveyParameters, bool trackChanges)
         {
             var surveys =  await FindAll(trackChanges)
+                .Search(surveyParameters.SearchCreatorId)
                 .OrderBy(s => s.Title)
                 .ToListAsync();
 
